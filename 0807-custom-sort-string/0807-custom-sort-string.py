@@ -1,18 +1,15 @@
-from collections import defaultdict
+from collections import Counter
 
 class Solution:
     def customSortString(self, order: str, s: str) -> str:
-        # this function ensures all letters in s not in order appear at the end of the string; not necessary per the problem, but I wanted a consistent result
-        def default_val():
-            return len(order) + 1
+        count_s = Counter(s)
+        result = []
 
-        sort_order = defaultdict(default_val)
+        for char in order:
+            result.append(char * count_s[char])
+            count_s[char] = 0
 
-        for ind, char in enumerate(order):
-            sort_order[char] = ind
+        for char in count_s:
+            result.append(char * count_s[char])
 
-        s_arr = list(s)
-
-        s_arr.sort(key=lambda x: sort_order[x])
-
-        return ''.join(s_arr)
+        return ''.join(result)
