@@ -9,18 +9,15 @@ class Solution:
         if not head.next:
             return None
 
-        prev = ListNode(0)
-        prev.next = head
-        fast = slow = head
+        slow, fast = head, head.next.next
 
-        # find the middle node, and keep track of the node before it with "prev"
+        # when fast reaches the end, slow will be at the node BEFORE the middle node
         while fast and fast.next:
-            prev = prev.next
             slow = slow.next
             fast = fast.next.next
 
-        # "delete" the middle node by pointing prev to the node after the middle node
-        prev.next = slow.next
+        # "delete" the middle node by pointing slow to the node after the middle node
+        slow.next = slow.next.next
 
         return head
         
