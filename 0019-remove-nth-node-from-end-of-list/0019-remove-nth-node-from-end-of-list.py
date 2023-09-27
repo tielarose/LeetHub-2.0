@@ -17,10 +17,7 @@ class Solution:
             left = left.next
             right = right.next
 
-        if left.next == head:
-            head = head.next
-        else:
-            left.next = left.next.next
+        left.next = left.next.next
 
-        return head
+        return dummy.next
         
