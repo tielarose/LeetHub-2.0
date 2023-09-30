@@ -1,20 +1,14 @@
 class Solution:
     def backspaceCompare(self, s: str, t: str) -> bool:
-        stack_s = []
-        stack_t = []
+        def remove_hash(input_str):
+            stack = []
 
-        for char in s:
-            if char == '#':
-                if stack_s:
-                    stack_s.pop()
-            else:
-                stack_s.append(char)
+            for char in input_str:
+                if char != '#':
+                    stack.append(char)
+                elif stack:
+                    stack.pop()
 
-        for char in t:
-            if char == '#':
-                if stack_t:
-                    stack_t.pop()
-            else:
-                stack_t.append(char)
+            return ''.join(stack)
 
-        return ''.join(stack_s) == ''.join(stack_t)
+        return remove_hash(s) == remove_hash(t)
