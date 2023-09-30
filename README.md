@@ -3,6 +3,7 @@
   <br>
   <a href="https://chrome.google.com/webstore/detail/leethub-v2/mhanfgfagplhgemhjfeolkkdidbakocm">LeetHub v2</a> - Automatically sync your code to GitHub.
   <br>
+  <a href="https://github.com/arunbhardwaj/LeetHub-2.0">Visit arunbhardwaj's (the creator's) repository here, this is a fork I've separated into a standalone repository</a>
   <br>
 </h1>
 
