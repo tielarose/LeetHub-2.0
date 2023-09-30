@@ -5,26 +5,16 @@
 #         self.next = next
 class Solution:
     def isPalindrome(self, head: Optional[ListNode]) -> bool:
-        slow, fast, prev, curr = head, head, None, head
+        self.front_pointer = head
 
-        # reverse the first half of the linked list
-        while fast and fast.next:
-            slow, fast = slow.next, fast.next.next
-            curr.next, prev, curr = prev, curr, slow
+        def recursively_check(curr_node):
+            if curr_node:
+                if not recursively_check(curr_node.next):
+                    return False
+                if self.front_pointer.val != curr_node.val:
+                    return False
+                self.front_pointer = self.front_pointer.next
 
-        # if fast is not None, then the number of nodes is odd
-        # we can ignore the middle (unpaird) node
-        if fast:
-            curr = curr.next
+            return True
 
-        # compare the two halves of the linked list
-        first = prev
-        second = curr
-        while first and second:
-            if first.val != second.val:
-                return False
-            first = first.next
-            second = second.next
-
-        return True
-        
+        return recursively_check(head)
