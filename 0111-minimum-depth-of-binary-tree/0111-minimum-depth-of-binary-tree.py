@@ -10,14 +10,13 @@ class Solution:
             if not root:
                 return 0
 
+            if not root.left:
+                return 1 + dfs(root.right)
+            elif not root.right:
+                return 1 + dfs(root.left)
+
             left = dfs(root.left)
             right = dfs(root.right)
-
-            if left == 0 and right == 0:
-                return 1
-
-            if left == 0 or right == 0:
-                return left + right + 1
 
             return min(left, right) + 1
 
