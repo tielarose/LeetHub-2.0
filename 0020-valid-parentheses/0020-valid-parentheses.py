@@ -1,20 +1,18 @@
 class Solution:
     def isValid(self, s: str) -> bool:
-        opening_parens = set('({[')
-
         matches = {
-            ')': '(',
-            '}': '{',
-            ']': '['
+            '(': ')',
+            '{': '}',
+            '[': ']'
         }
         
         stack = []
 
         for char in s:
-            if char in opening_parens:
+            if char in matches:
                 stack.append(char)
             else:
-                if stack and stack[-1] == matches[char]:
+                if stack and matches[stack[-1]] == char:
                     stack.pop()
                 else:
                     return False
