@@ -12,12 +12,15 @@ class Solution:
 
             left = dfs(node.left, max(curr_max, node.val))
             right = dfs(node.right, max(curr_max, node.val))
+
+            num_of_good_nodes = left + right
             
             if node.val >= curr_max:
-                return left + right + 1
-            else:
-                return left + right
+                num_of_good_nodes += 1
 
-        return dfs(root, root.val)
+            return num_of_good_nodes
+
+
+        return dfs(root, float("-inf"))
 
         
