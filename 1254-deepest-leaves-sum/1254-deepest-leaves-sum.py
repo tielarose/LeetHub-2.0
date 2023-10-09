@@ -9,23 +9,16 @@ from collections import deque
 
 class Solution:
     def deepestLeavesSum(self, root: Optional[TreeNode]) -> int:
-        queue = deque([root])
-        deepest_level_sum = 0
+        next_level = deque([root])
 
-        while queue:
-            row_sum = 0
+        while next_level:
+            curr_level = next_level
+            next_level = deque()
 
-            for _ in range(len(queue)):
-                node = queue.popleft()
-
-                row_sum += node.val
-
+            for node in curr_level:
                 if node.left:
-                    queue.append(node.left)
+                    next_level.append(node.left)
                 if node.right:
-                    queue.append(node.right)
-            
-            deepest_level_sum = row_sum
+                    next_level.append(node.right)
 
-        return deepest_level_sum
-        
+        return sum([node.val for node in curr_level])
