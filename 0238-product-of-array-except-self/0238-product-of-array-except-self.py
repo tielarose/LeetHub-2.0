@@ -8,7 +8,7 @@ class Solution:
 
         # loop again, multiplying the right product
         right_product = 1
-        for i in reversed(range(len(nums))):
+        for i in range(len(nums)-1, -1, -1):
             result[i] *= right_product
             right_product *= nums[i]
 
