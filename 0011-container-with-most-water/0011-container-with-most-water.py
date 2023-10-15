@@ -6,13 +6,9 @@ class Solution:
 
         while left < right:
             curr_width = right - left
-            print(right, left)
-            height_r = height[right]
-            height_l = height[left]
-            curr_height = min(height_r, height_l)
-            max_area = max(max_area, curr_width * curr_height)
+            max_area = max(max_area, min(height[right], height[left]) * curr_width)
 
-            if height_r < height_l:
+            if height[right] < height[left]:
                 right -= 1
             else:
                 left += 1
